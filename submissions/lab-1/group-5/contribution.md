@@ -2,6 +2,6 @@
 
 | Lab Section | Driver | Navigator | Recorder | Reviewer |
 |---|---|---|---|---|
-| Part A & B | | | | |
-| Part C | | | | |
-| Part D & E | | | | |
+| Part A & B | Russel Jewel De Vera | Skye Rowee Gloriana | Mekylla Palattao | Grace Nicole Feliciano |
+| Part C | Russel Jewel De Vera | Skye Rowee Gloriana | Mekylla Palattao | Grace Nicole Feliciano |
+| Part D & E | Russel Jewel De Vera | Skye Rowee Gloriana | Mekylla Palattao | Grace Nicole Feliciano |
