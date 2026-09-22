@@ -28,6 +28,7 @@ You are not authorized to perform this operation. User: arn:aws:iam::54838726601
 
 **Screenshot 2 (Running Instance):**  
 ![Running Instance](part-d-instance.png)
+![Running Instance](part-d-instance2.png)
 
 ## Part E
 
