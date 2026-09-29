@@ -16,11 +16,11 @@
 
 1. **Activity History:** Add a screenshot showing the Auto Scaling group's Activity history when the second instance launched.
 
-![activity_history.png]  
+![Activity History SS][activity_history.png]  
 
 2. **CloudWatch Alarm:** Add a screenshot of the target tracking alarm in the "In alarm" state.
 
-![cloudwatch_alarm.png]
+![Cloudwatch Alarm SS][cloudwatch_alarm.png]
 
 # **Questions**
 
