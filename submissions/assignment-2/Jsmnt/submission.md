@@ -66,7 +66,8 @@ A resource within the network interface is assigned an IP address. This can incl
 
 Screenshot 2. Save it as `screenshot-2-routes.png` in your folder. The image line below shows it.
 
-![Screenshot 2: routes of the route table](screenshot-2-routes.png)
+<img width="1693" height="153" alt="screenshot-2-routes" src="https://github.com/user-attachments/assets/a20ae521-76ca-4d73-b674-350f22b25165" />
+
 
 ### A5. Public or private
 
@@ -107,7 +108,7 @@ A NACL operates at the subnet level, supports both allow and deny rules, is stat
 
 Screenshot 3. Save it as `screenshot-3-network-acl.png` in your folder. The image line below shows it.
 
-![Screenshot 3: inbound rules of the network ACL](screenshot-3-network-acl.png)
+<img width="1686" height="150" alt="screenshot-3-networl-acl" src="https://github.com/user-attachments/assets/21698b46-ed5d-4005-b8ed-df007edb59b3" />
 
 ### A9. The default security group
 
@@ -153,7 +154,7 @@ Excalidraw
 
 Save your diagram as `vpc-diagram.png` in your folder. The image line below shows it.
 
-![B3: my VPC diagram](vpc-diagram.png)
+<img width="2048" height="1200" alt="vpc-diagram" src="https://github.com/user-attachments/assets/4f87fc77-0b85-4fbf-a2a9-2170da22b660" />
 
 ### B4. Predict a change
 
