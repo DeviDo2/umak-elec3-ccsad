@@ -11,10 +11,10 @@ How to use this template:
 
 ## About me
 
-- GitHub username: <answer>
-- Section: <answer>
-- IAM user name that I signed in with: <answer>
-- X: <answer>
+- GitHub username: NotLathrell
+- Section: IV-CCSAD
+- IAM user name that I signed in with: ccsad-g09
+- X: 191
 
 ---
 
@@ -24,44 +24,45 @@ How to use this template:
 
 Default VPC IPv4 CIDR:
 
-<answer>
+172.31.0.0/16
 
 Number of addresses in that CIDR:
 
-<answer>
+65,536
 
 ### A2. The subnets
 
 | Availability Zone | IPv4 CIDR |
 | --- | --- |
-| <answer> | <answer> |
-| <answer> | <answer> |
-| <answer> | <answer> |
+| apse1-az2 (ap-southeast-1a) | 172.31.32.0/20 |
+| apse1-az1 (ap-southeast-1b) | 172.31.16.0/20 |
+| apse1-az3 (ap-southeast-1c) | 172.31.0.0/20 |
 
 Screenshot 1. Save it as `screenshot-1-subnets.png` in your folder. The image line below shows it.
 
 ![Screenshot 1: subnet list](screenshot-1-subnets.png)
 
+
 ### A3. Available addresses
 
 Available IPv4 addresses in each subnet:
 
-<answer>
+4,091
 
 Why is the number lower than 4,096?
 
-<answer>
+AWS reserves 5 addresses in every subnet: the first four and the last one.
 
 What uses the missing address in the subnet with the lowest number?
 
-<answer>
+Something in it holds an address through a network interface. That could be an instance from Lab 2, including a stopped one, since stopped instances keep their address.
 
 ### A4. The route table
 
 | Destination | Target |
 | --- | --- |
-| <answer> | <answer> |
-| <answer> | <answer> |
+| 0.0.0.0/0 | igw-0943e7e6f88293168 |
+| 172.31.0.0/16 | local |
 
 Screenshot 2. Save it as `screenshot-2-routes.png` in your folder. The image line below shows it.
 
@@ -71,38 +72,38 @@ Screenshot 2. Save it as `screenshot-2-routes.png` in your folder. The image lin
 
 Are the default subnets public or private? Which route proves it?
 
-<answer>
+The subnets are public, and the proof is the 0.0.0.0/0 → igw-0943e7e6f88293168 route.
 
 ### A6. The internet gateway
 
 State of the internet gateway:
 
-<answer>
+Attached
 
 What happens to the default subnets if the gateway is detached?
 
-<answer>
+the 0.0.0.0/0 route would have nowhere to go, so the subnets would lose internet access in both directions. In effect they'd become private, while the local route between subnets would still work.
 
 ### A7. NAT gateways
 
 Number of NAT gateways:
 
-<answer>
+0
 
 Can a server in a new private subnet download updates? Why?
 
-<answer>
+No. A private subnet has no route to the internet gateway, and there's no NAT gateway to send its outbound traffic through.
 
 ### A8. The network ACL
 
 | Rule number | Source | Allow or Deny |
 | --- | --- | --- |
-| <answer> | <answer> | <answer> |
-| <answer> | <answer> | <answer> |
+| 100 | 0.0.0.0/0 | Allow |
+| * | 0.0.0.0/0 | Deny |
 
 How is a network ACL different from a security group?
 
-<answer>
+a NACL works at the subnet level, has allow and deny rules, is stateless, and checks rules in number order. A security group works at the resource level, has allow rules only, and is stateful
 
 Screenshot 3. Save it as `screenshot-3-network-acl.png` in your folder. The image line below shows it.
 
@@ -112,11 +113,13 @@ Screenshot 3. Save it as `screenshot-3-network-acl.png` in your folder. The imag
 
 Inbound rule (type and source):
 
-<answer>
+sgr-0b795189f3efb993c
+Type: All traffic
+Soruce: sg-0c5b6d4081cf0a534
 
 Which resources can send traffic to an instance that uses it?
 
-<answer>
+only resources that also use this same security group can send traffic in.
 
 ---
 
@@ -124,8 +127,8 @@ Which resources can send traffic to an instance that uses it?
 
 ### B1. Plan two subnets
 
-- Public subnet CIDR: <answer>
-- Private subnet CIDR: <answer>
+- Public subnet CIDR: 10.191.0.0/24
+- Private subnet CIDR: 10.191.1.0/24
 
 ### B2. Route tables
 
@@ -133,20 +136,20 @@ Route table of the public subnet:
 
 | Destination | Target |
 | --- | --- |
-| <answer> | <answer> |
-| <answer> | <answer> |
+| 10.191.0.0/16 | local |
+| 0.0.0.0/0 | internet gateway |
 
 Route table of the private subnet:
 
 | Destination | Target |
 | --- | --- |
-| <answer> | <answer> |
+| 10.191.0.0/16 | local |
 
 ### B3. My VPC diagram
 
 Tool used (Excalidraw, draw.io, Lucidchart, or paper):
 
-<answer>
+Excalidraw
 
 Save your diagram as `vpc-diagram.png` in your folder. The image line below shows it.
 
@@ -156,20 +159,22 @@ Save your diagram as `vpc-diagram.png` in your folder. The image line below show
 
 Can you still open the web page from your laptop? Why?
 
-<answer>
+No. Even with a public IP and an open security group, there's no route between the subnet and the internet gateway anymore, so traffic can't get through.
 
 Can the instance still reach another instance in the VPC? Why?
 
-<answer>
+Yes. The local route is still there and connects all subnets in the VPC.
 
 ### B5. Place a database
 
 Which subnet gets the database? Why?
 
-<answer>
+It goes in the private subnet, because it has no internet gateway route, so the internet can't reach it directly. Only your app servers inside the VPC should talk to it.
 
 ### B6. My question about VPCs
 
 What is your question, and what made you think of it?
 
-<answer>
+What happens if two VPCs with overlapping CIDRs need to connect?
+How do you choose a VPC size before you know how big the app will grow?
+Can a subnet be resized after creation?
