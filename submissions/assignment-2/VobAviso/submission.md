@@ -23,11 +23,14 @@ Number of addresses in that CIDR:
 
 ### A2. The subnets
 
-| Availability Zone | IPv4 CIDR |
-| --- | --- |
-| ap-southeast-1a | 172.31.0.0/20 |
-| ap-southeast-1b | 172.31.16.0/20 |
-| ap-southeast-1c | 172.31.32.0/20 |
+| Subnet ID | IPv4 CIDR | Availability Zone |
+| :--- | :--- | :--- |
+| `subnet-0b0e8a011c4f5315c` | `172.31.64.0/20` | `us-east-1f` |
+| `subnet-0ea13467ecf29fe32` | `172.31.48.0/20` | `us-east-1e` |
+| `subnet-04697abd2f51e9735` | `172.31.16.0/20` | `us-east-1c` |
+| `subnet-049b74f9b3d2c3295` | `172.31.80.0/20` | `us-east-1b` |
+| `subnet-0aaf75a7cf9cda923` | `172.31.0.0/20` | `us-east-1a` |
+| `subnet-0b3239271e5806f40` | `172.31.32.0/20` | `us-east-1d` |
 
 Screenshot 1. Save it as `screenshot-1-subnets.png` in your folder. The image line below shows it.
 
