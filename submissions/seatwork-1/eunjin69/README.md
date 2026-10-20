@@ -14,7 +14,6 @@ Attach 1 or 2 screenshots of you (and your group) actually doing the work in you
 Paste your `check.sh` output showing `PASS`:
 
 ```
-
 == Seatwork 1 — checking seatwork.sh ==
 
 -- Part A: required commands present --
@@ -42,15 +41,15 @@ PASS — found: rm -r practice_cli (Part 5.20)
 -- Part B: actually running it produces the right results --
 PASS — script ran to completion (exit 0).
 PASS — cat notes.txt printed both lines you wrote into it.
-PASS — the checkpoint 'ls -l notes.txt' after Part 3 shows owner-execute set.
+FAIL — couldn't confirm chmod u+x took effect from the checkpoint ls -l output.
+  - Make sure Part 3's checkpoint (ls -l notes.txt, after both chmod commands) runs and prints.
 PASS — ps aux output (or similar) appeared.
-PASS — pgrep bash printed a numeric PID.
+FAIL — no bare numeric line found — pgrep bash may not have run or found nothing.
 PASS — practice_cli/ was removed (Part 5 cleanup ran).
 
 ==================================
-PASS — all checks passed.
+FAIL — see messages above.
 ==================================
-```
 
 ## Checklist
 
