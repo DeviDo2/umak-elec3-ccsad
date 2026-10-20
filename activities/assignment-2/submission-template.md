@@ -126,8 +126,8 @@ Only other resources (EC2 instances, databases, interfaces) that are assigned to
 
 ### B1. Plan two subnets
 
-- Public subnet CIDR: 10.155.1.0/24
-- Private subnet CIDR: 10.155.2.0/24
+- Public subnet CIDR: 10.155.0.0/16
+- Private subnet CIDR: 10.155.1.0/24
   
 ### B2. Route tables
 
