@@ -14,7 +14,7 @@ How to use this template:
 - GitHub username: eson-gcia
 - Section: IV - CCSAD
 - IAM user name that I signed in with: ccsad-g09
-- X: 01
+- X: 101
 
 ---
 
@@ -126,8 +126,8 @@ Other resources that are associated with the same default security group can sen
 
 ### B1. Plan two subnets
 
-- Public subnet CIDR: 172.31.48.0/24
-- Private subnet CIDR: 172.31.49.0/24
+- Public subnet CIDR: 10.101.0.0/24
+- Private subnet CIDR: 10.101.1.0/24
 
 ### B2. Route tables
 
@@ -135,14 +135,14 @@ Route table of the public subnet:
 
 | Destination | Target |
 | --- | --- |
-| 172.31.0.0/16 | local |
+| 10.101.0.0/16 | local |
 | 0.0.0.0/0 | Internet Gateway |
 
 Route table of the private subnet:
 
 | Destination | Target |
 | --- | --- |
-| 172.31.0.0/16 | local |
+| 10.101.1.0/16 | local |
 
 ### B3. My VPC diagram
 
