@@ -191,3 +191,4 @@ Questions 1, 2, 6, and 7.
 You may use an AI tool to understand a concept. Write your answers in your
 own words. If a concept is still unclear, say so in your answer. See your
 course's AI-use policy for what counts as acceptable assistance.
+D
