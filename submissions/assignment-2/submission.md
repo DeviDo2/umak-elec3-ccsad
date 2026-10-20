@@ -11,10 +11,10 @@ How to use this template:
 
 ## About me
 
-- GitHub username: NathanielCamachoUMAK
-- Section: III-CCSAD
-- IAM user name that I signed in with: ccsad-g01
-- X: 132
+- GitHub username: romeonspotify
+- Section: ccsad
+- IAM user name that I signed in with: ccsad-g07
+- X: 107
 
 ---
 
@@ -24,19 +24,21 @@ How to use this template:
 
 Default VPC IPv4 CIDR:
 
-172.31.0.0/16
+172.31.0.0/20
+172.31.32.0/20
+172.31.16.0/20
 
 Number of addresses in that CIDR:
 
-65,536
+3
 
 ### A2. The subnets
 
 | Availability Zone | IPv4 CIDR |
 | --- | --- |
-| ap-southeast-1a | 172.31.32.0/20 |
-| ap-southeast-1b | 172.31.16.0/20 |
-| ap-southeast-1c | 172.31.0.0/20 |
+| apne1-az1 (ap-northeast-1c)| 172.31.0.0/20 |
+| apne1-az4 (ap-northeast-1a)| 172.31.32.0/20 |
+| apne1-az2 (ap-northeast-1d)| 172.31.16.0/20 |
 
 Screenshot 1. Save it as `screenshot-1-subnets.png` in your folder. The image line below shows it.
 
@@ -46,21 +48,22 @@ Screenshot 1. Save it as `screenshot-1-subnets.png` in your folder. The image li
 
 Available IPv4 addresses in each subnet:
 
-4090, 4091, 4091
+4,091
 
 Why is the number lower than 4,096?
 
-AWS always reserves 5 IP addresses in every subnet for its own internal networking and routing.
+because a /20 subnet has 4,096 total IPv4 addresses but AWS reserves 5 addresses in each subnets for its own networking purposes
 
 What uses the missing address in the subnet with the lowest number?
 
-<answer>
+172.31.0.0
 
 ### A4. The route table
 
 | Destination | Target |
 | --- | --- |
-| 0.0.0.0/0 | igw-0943e7e6f88293168 |
+| 0.0.0.0/0 | 	
+igw-0eb50cb3b8dc34012 |
 | 172.31.0.0/16 | local |
 
 Screenshot 2. Save it as `screenshot-2-routes.png` in your folder. The image line below shows it.
@@ -71,7 +74,7 @@ Screenshot 2. Save it as `screenshot-2-routes.png` in your folder. The image lin
 
 Are the default subnets public or private? Which route proves it?
 
-Public, the route 0.0.0.0/0 sends traffic to the internet gateway
+Public, route 0.0.0.0/0 sends traffic to internet gateway
 
 ### A6. The internet gateway
 
@@ -81,7 +84,7 @@ Attached
 
 What happens to the default subnets if the gateway is detached?
 
-The route 0.0.0.0/0 loses its working target, removing the subnets' path to the internet. The instances can still reach each other via the local route
+The default subnets lose their direct route to the internet
 
 ### A7. NAT gateways
 
@@ -91,7 +94,7 @@ Number of NAT gateways:
 
 Can a server in a new private subnet download updates? Why?
 
-No, a new private subnet uses a route table with only the local route
+No,a private subnet should have a route through a NAT Gateway
 
 ### A8. The network ACL
 
@@ -102,7 +105,7 @@ No, a new private subnet uses a route table with only the local route
 
 How is a network ACL different from a security group?
 
-A network ACL acts as a firewall that protects an entire subnet, whereas a security group protects individual resources like instances and can specifically deny traffic, while a security group is stateful and can only allow traffic
+A network ACL controls traffic at the subnet level and is stateless, while a security group controls traffic at the instance level and is stateful
 
 Screenshot 3. Save it as `screenshot-3-network-acl.png` in your folder. The image line below shows it.
 
@@ -112,11 +115,12 @@ Screenshot 3. Save it as `screenshot-3-network-acl.png` in your folder. The imag
 
 Inbound rule (type and source):
 
-All traffic - sg-0c5b6d4081cf0a534 / default
+All traffic sg-095ea6a6641c75d87 / default
 
 Which resources can send traffic to an instance that uses it?
 
 Only resources that also use the default security group
+
 
 ---
 
@@ -124,8 +128,8 @@ Only resources that also use the default security group
 
 ### B1. Plan two subnets
 
-- Public subnet CIDR: 10.132.0.0/24
-- Private subnet CIDR: 10.132.1.0/24
+- Public subnet CIDR: 10.172.0.0/24
+- Private subnet CIDR: 10.172.1.0/24
 
 ### B2. Route tables
 
@@ -133,43 +137,44 @@ Route table of the public subnet:
 
 | Destination | Target |
 | --- | --- |
-| 10.132.0.0/16 | local |
-| 0.0.0.0/0 | internet gateway |
+| 10.172.0.0/16 | Local |
+| 0.0.0.0/0 | Internet Gateway|
 
 Route table of the private subnet:
 
 | Destination | Target |
 | --- | --- |
-| 10.132.0.0/16 | local |
+| 10.172.1.0/24 | Internet Gateway|
 
 ### B3. My VPC diagram
 
-Tool used draw.io:
+Tool used (Excalidraw, draw.io, Lucidchart, or paper):
 
 Yes, The local route for the VPC range is still in the route table, which connects every subnet in the VPC
 
 Save your diagram as `vpc-diagram.png` in your folder. The image line below shows it.
 
-![B3: my VPC diagram](vpc-diagram.drawio.png)
+![B3: my VPC diagram](vpc-diagram.png)
 
 ### B4. Predict a change
 
 Can you still open the web page from your laptop? Why?
 
-No, The laptop is on the internet, and without the route 0.0.0.0/0, traffic between the instance and an internet address has no route, even with a public IP address
+No. Even though the laptop has internet access, there is no 0.0.0.0/0 route, so traffic going to an internet address has no route. Having a public IP address alone is not enough.
 
 Can the instance still reach another instance in the VPC? Why?
 
-Yes, the local route for the VPC range is still in the route table, which connects every subnet in the VPC
+Yes. The route table still has a local route for the VPC's IP range, allowing instances in different subnets within the same VPC to communicate.
 
 ### B5. Place a database
 
 Which subnet gets the database? Why?
 
-The private subnet, 10.132.1.0/24. Its route table has no route to the internet gateway, so nobody on the internet can reach the database
+The database should be placed in the private subnet, 10.132.1.0/24. Since its route table does not have a route to the Internet Gateway, the database cannot be directly accessed from the internet.
+
 
 ### B6. My question about VPCs
 
 What is your question, and what made you think of it?
 
-How do developers or administrators securely connect to and manage a database if it is placed in a private subnet with no internet access? I thought of this because if the private subnet has no route to the internet gateway, I am not sure how a database administrator working from their own laptop on a home network would log in to run queries, update schemas, or perform maintenance.
+How can developers or administrators securely access and manage a database that is located in a private subnet without internet access? I thought of this because if the private subnet has no route to the Internet Gateway, I wondered how a database administrator using a laptop from home could securely log in, run queries, update the database schema, or perform maintenance.
