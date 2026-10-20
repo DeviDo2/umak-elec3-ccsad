@@ -1,12 +1,8 @@
 # Lab 1 Submission
 
 ## Part B
-**Error Action Name:**
-
-Instance launch failed
-
-You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g01 is not authorized to perform: ec2:RunInstances on resource: arn:aws:ec2:ap-southeast-1:548387266019:instance/* because no identity-based policy allows the ec2:RunInstances action.
-<img width="1471" height="741" alt="PartBError" src="https://github.com/user-attachments/assets/a90e7016-8c11-40ef-8758-cbfea73f632a" />
+**Error Action Name:** Instance launch failed
+You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g03 is not authorized to perform: <b> ec2:RunInstances </b> on resource: arn:aws:ec2:ap-southeast-1:548387266019:instance/* because no identity-based policy allows the ec2:RunInstances action. Encoded authorization failure message: wybh6ekb8bM4x1QHFMop3EDpzLB_98Xh7-UVid0b6DmCgaFUfYWca-k2i3ljTaIpnD8WgC4iVsN47R1dRFBmHSI0hvzqiTmZV2Z3K6GHN5Zqh7J7x8KuSLSiECD90mQOHtcDRiYik5eB09CqzQ_mRB8zVEIK8uPZ-YXIV0z66MyM5lapUWqKdC9Y6gfpVlvDIKIAtKJHu0DIAqQtosgXQv1UgXocNXR46Ny1tli8xM2gE61107cQIiaXn5VJkJtEg9KIr2Fz393nAD476ESiJiCSY5zmPI_U0K_1kBuxlXBUHM2wq9hUUkjUYCY-XkjVZ9XRfgqE_HLRD8KjuBGwh0ISKZjKGCoMJkshoXy4hw-_mrP9eNnvQV4l0f0rn7wJXmudpTq8QyIrP59qm8xuervrxHGue9YfPsgTQM9KpJqA-BBXwGuPZBzLIoD3ob2ldao3YFeBze3t9XRELSy8HWZitXWVS1A-7-66ang4C-IFzqhm57vvjj3E5fhjBDkZ9Z8GcxL4n-SH9N4nszKhkQ2lnRp6QHOd165YhFX6K4fFFyV3mzv2uPbjY9aWsJOka6IrH-JqCo6oPvme6Ru2xh66Rm7G_rl8mWY2qddCHPOx1naqSdaU95Ccsn-Um8bAvfQ-u9FqT4T26McHr8cEXreLHYH1dVHyS0ie5Y8tuej7NVUQ9P3g-Vel6axrpGkZZieMbsAdHKuWaQi91Zl01MBJGMSriQtbmw3FrXraEVGFoAvmka68CEKQqIdz3UDqGLjNDmk4foKJBMU6qxfJ-hscfFVOKwJp0RZMmuWhhkuPADq9GTJsmwFs
 
 **Screenshot (Part B launch denial with username visible):**
 ![Part B Error](submissions\lab-1\images\part-b-error.png)
@@ -20,8 +16,10 @@ You are not authorized to perform this operation. User: arn:aws:iam::54838726601
 ## Part D
 **Security Group Error Text:** You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g03 is not authorized to perform: ec2:CreateSecurityGroup on resource: arn:aws:ec2:ap-southeast-1:548387266019:security-group/* because no identity-based policy allows the ec2:CreateSecurityGroup action. Encoded authorization failure message: aTo40gVpYRjcpkSt8dr0xvtp78BRRZ1wEfGrI8G035U05zGCeH7iMeWbqs4_Vvd-DZ_Pt-gOtz_x0Q8tjG9z-R15ae9hUMEsHv_JnVfv-g2enPShbajiUj1-E-Ul2n9ynHGbQnS1Pp73u4PjBUsjwTVsDqlokyplU2IGWoKZkK42kCvQYQQkDHLC7EYHzuEjLskh9oBPnPY9kCvsDOqysPAsEDB4j8OcUwTrvymY9PAILExALtFzXxJU8ZuWgvystpDNIFqUiZ-Twk7sRb-sM9pKl9XFP-NQSR-alL6ljXx0HU6-4XtCXStvHGaP82dWu2avY-BR4LC_I0WexnWv-fZdkftCobV0zmrsDxmOW3wzP0WKJbDvvfzzItHAS22LYJsYg9KdXx3D5E05WU_O7zZk_AVrT_2basdS1lHsXeHPzieIeyBqMbm2JwmP_kUHAD4rQboCoXIDKiZ-66WW-YgeXnP41_din-rWGr4KIoC0HaOd1hPZxeHg9vUNdrQHvh3-uzI8MoyrTeD_somvW-Vs95UcRqR7qDnL1PhMwQ
 
-You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g01 is not authorized to perform: ec2:CreateSecurityGroup on resource: arn:aws:ec2:ap-southeast-1:548387266019:security-group/* because no identity-based policy allows the ec2:CreateSecurityGroup action.
-**Running Instance Time:** 20:30 UTC+8
+**Running Instance Time:** Tue Sep 22 2026 21:14:03 GMT+0800 (Philippine Standard Time) (4 minutes)
+
+**Screenshot 1 (Permissions tab listing <user>-launch):**
+![Permissions Tab](part-d-policy.png)  
 
 **Screenshot 2 (Instance in Running state):**
 ![Running Instance](part-d-instance.png)
@@ -33,19 +31,8 @@ You are not authorized to perform this operation. User: arn:aws:iam::54838726601
 **Screenshot 1 (t3.small or Tokyo denial):**
 ![Boundary Denial](part-e-denial.png)
 
-You are not authorized to perform this operation. User: arn:aws:iam::548387266019:user/ccsad-g01 is not authorized to perform: ec2:RunInstances on resource: arn:aws:ec2:ap-southeast-1:548387266019:instance/* with an explicit deny in a permissions boundary: arn:aws:iam::548387266019:policy/umak-lab-boundary.
-<img width="1880" height="894" alt="PartEError" src="https://github.com/user-attachments/assets/410411f9-a8b1-453e-a15e-a01ee8fedb33" />
-
-The AMI ID (ami-06380d26ad7176f2c) is not valid. The AMI might no longer exist or may be specific to another account or Region.
-<img width="973" height="556" alt="Screenshot 2026-09-22 213416" src="https://github.com/user-attachments/assets/a520b9b0-b7a5-4de0-b845-cf30d240d6ee" />
-
-No VPCs found, either this account doesn’t have any VPCs in this region or an invalid search has been entered. Please refine the search query, create a new VPC or create a new default VPC
-<img width="1858" height="885" alt="Screenshot 2026-09-22 203723" src="https://github.com/user-attachments/assets/f6da880b-6322-4310-a088-c089d4914587" />
-
-**CloudTrail errorMessage:**
-
-User: arn:aws:iam::548387266019:user/ccsad-g01 is not authorized to perform: ec2:RunInstances on resource: arn:aws:ec2:ap-southeast-1:548387266019:instance/* with an explicit deny in a permissions boundary: arn:aws:iam::548387266019:policy/umak-lab-boundary.
-<img width="1867" height="927" alt="Screenshot 2026-09-22 205930" src="https://github.com/user-attachments/assets/94ca3189-07f9-480c-b009-bfc8ac323b54" />
+**Screenshot 2 (CloudTrail event showing errorMessage):**
+![CloudTrail Event](part-e-cloudtrail.png)
 
 ## Part F Questions
 1. Which action did the Part B error name?
